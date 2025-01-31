@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class MessageUtils {
 
     public static final String DIVIDER = "<gray>----------------------------------------</gray>";
-    public static final String PREFIX = "<gray>[<gold>snowtargetminigame</gold>]</gray> <gold>»</gold> ";
+    public static final String PREFIX = "<gray>[<gold>STG</gold>]</gray> <gold>»</gold> ";
 
     private static final MiniMessage miniMessage = MiniMessage.miniMessage();
 
