@@ -1,0 +1,4 @@
+# config.yml
+snowball-amount: 999
+cooldown-time: 60
+detection-distance: 1

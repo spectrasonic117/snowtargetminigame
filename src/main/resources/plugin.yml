@@ -1,0 +1,14 @@
+name: snowtargetminigame
+version: "${version}"
+main: com.spectrasonic.snowtargetminigame.Main
+api-version: "1.21"
+authors: [Spectrasonic]
+commands:
+    snowtarget:
+        description: Main command for the plugin
+        aliases: [st]
+        permission: snowtarget.main
+permissions:
+    snowtarget.main:
+        description: Main permission for the plugin
+        default: op
