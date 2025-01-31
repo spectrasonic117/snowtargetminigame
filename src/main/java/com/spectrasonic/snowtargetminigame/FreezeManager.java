@@ -30,7 +30,7 @@ public class FreezeManager {
         frozenPlayers.add(player.getUniqueId());
 
         // Add snowballs to inventory
-        ItemStack snowballs = new ItemStack(Material.SNOWBALL, 144);
+        ItemStack snowballs = new ItemStack(Material.SNOWBALL, 999);
         player.getInventory().addItem(snowballs);
 
         // Track added snowballs
