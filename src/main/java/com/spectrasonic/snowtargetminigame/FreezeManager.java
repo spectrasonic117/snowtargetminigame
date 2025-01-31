@@ -43,7 +43,7 @@ public class FreezeManager {
         // Track added snowballs
         snowballCount.put(player.getUniqueId(), 144);
 
-        MessageUtils.sendMessage(player, "&bEstá congelado! Usa bolas de nieve para golpear el objetivos"); 
+        MessageUtils.sendMessage(player, "<aqua>Está congelado! Usa bolas de nieve para golpear el objetivos"); 
     }
 
     public void unfreezePlayer(Player player) {
@@ -56,6 +56,6 @@ public class FreezeManager {
         long cooldownTime = plugin.getConfig().getLong("cooldown-time", 10) * 1000; // Convertir a milisegundos
         cooldowns.put(player.getUniqueId(), System.currentTimeMillis() + cooldownTime);
 
-        MessageUtils.sendMessage(player, "&a Has completado el Minijuego, continúa con tu camino!");
+        MessageUtils.sendMessage(player, "<green>Has completado el Minijuego, continúa con tu camino!");
     }
 }

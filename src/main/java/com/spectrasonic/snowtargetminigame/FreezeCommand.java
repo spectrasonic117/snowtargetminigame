@@ -11,11 +11,8 @@ import com.spectrasonic.snowtargetminigame.Utils.MessageUtils;
 import co.aikar.commands.annotation.Subcommand;
 import co.aikar.commands.annotation.CommandCompletion;
 import org.bukkit.plugin.java.JavaPlugin;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.Collections;
 
-@CommandAlias("defreeze|df")
+@CommandAlias("defreeze|df|st")
 @Description("Manually unfreeze a player")
 public class FreezeCommand extends BaseCommand {
 
@@ -30,42 +27,31 @@ public class FreezeCommand extends BaseCommand {
     @Default
     public void defreeze(Player sender, @Optional String targetName) {
         if (targetName == null) {
-            MessageUtils.sendMessage(sender, "&cUsage: /defreeze <player>");
+            MessageUtils.sendMessage(sender, "<yellow>Usage: /defreeze <player>");
             return;
         }
 
         Player target = Bukkit.getPlayer(targetName);
         if (target == null) {
-            MessageUtils.sendMessage(sender, "&cPlayer not found!");
+            MessageUtils.sendMessage(sender, "<red>Player not found!");
             return;
         }
 
         if (!freezeManager.isPlayerFrozen(target)) {
-            MessageUtils.sendMessage(sender, "&cPlayer is not frozen!");
+            MessageUtils.sendMessage(sender, "<red>Player is not frozen!");
             return;
         }
 
         freezeManager.unfreezePlayer(target);
-        MessageUtils.sendMessage(target, "&aYou have been unfrozen!");
+        MessageUtils.sendMessage(target, "<green>You have been unfrozen!");
     }
+
     @Subcommand("reload")
+    @CommandCompletion("@players reload")
     @Description("Reload the configuration")
     public void onReload(Player sender) {
         plugin.reloadConfig();
-        MessageUtils.sendMessage(sender, "&aConfiguration reloaded!");
+        MessageUtils.sendMessage(sender, "<green>Configuration reloaded!");
     }
 
-@CommandCompletion("@players reload")
-public List<String> onTabComplete(Player sender, String[] args) {
-    if (args.length == 1) {
-        // Provide player names for the first argument
-        return Bukkit.getOnlinePlayers().stream()
-                .map(Player::getName)
-                .collect(Collectors.toList());
-    } else if (args.length == 2) {
-        // Provide "reload" as a suggestion for the second argument
-        return Collections.singletonList("reload");
-    }
-    return Collections.emptyList();
-}
 }

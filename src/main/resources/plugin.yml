@@ -4,11 +4,11 @@ main: com.spectrasonic.snowtargetminigame.Main
 api-version: "1.21"
 authors: [Spectrasonic]
 commands:
-    snowtarget:
+    defreeze:
         description: Main command for the plugin
-        aliases: [st]
-        permission: snowtarget.main
+        aliases: [st, df]
+        permission: defreeze.main
 permissions:
-    snowtarget.main:
+    defreeze.main:
         description: Main permission for the plugin
         default: op
