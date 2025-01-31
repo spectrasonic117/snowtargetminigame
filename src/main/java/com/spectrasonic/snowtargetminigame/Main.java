@@ -11,8 +11,13 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.freezeManager = new FreezeManager();
-        Bukkit.getPluginManager().registerEvents(new FreezeListener(freezeManager), this);
+
+        this.freezeManager = new FreezeManager(this);
+
+        saveDefaultConfig();
+        registerCommands();
+        registerEvents();
+
         MessageUtils.sendStartupMessage(this);
         MessageUtils.sendVeiMessage(this);
     }
@@ -27,10 +32,11 @@ public class Main extends JavaPlugin {
 
     public void registerCommands() {
         PaperCommandManager commandManager = new PaperCommandManager(this);
-        commandManager.registerCommand(new FreezeCommand(freezeManager));
+        commandManager.registerCommand(new FreezeCommand(freezeManager, this));
     }
 
     public void registerEvents() {
-        Bukkit.getPluginManager().registerEvents(new FreezeListener(freezeManager), this);
+        Bukkit.getPluginManager().registerEvents(new FreezeListener(freezeManager, this), this);
+
     }
 }

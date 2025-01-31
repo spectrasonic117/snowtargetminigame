@@ -8,13 +8,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class FreezeListener implements Listener {
 
     private final FreezeManager freezeManager;
+    private final JavaPlugin plugin;
 
-    public FreezeListener(FreezeManager freezeManager) {
+    public FreezeListener(FreezeManager freezeManager, JavaPlugin plugin) {
         this.freezeManager = freezeManager;
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -37,8 +40,9 @@ public class FreezeListener implements Listener {
         // Check cooldown before freezing
         if (freezeManager.isOnCooldown(player)) return;
 
-        // Check if player is above lapis lazuli
-        Location below = player.getLocation().subtract(0, 2, 0);
+        // Obtener la distancia de detección desde la configuración
+        int detectionDistance = plugin.getConfig().getInt("detection-distance", 2);
+        Location below = player.getLocation().subtract(0, detectionDistance, 0);
         if (below.getBlock().getType() == Material.LAPIS_BLOCK) {
             freezeManager.freezePlayer(player);
         }

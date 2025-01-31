@@ -8,15 +8,23 @@ import co.aikar.commands.annotation.Optional;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import com.spectrasonic.snowtargetminigame.Utils.MessageUtils;
+import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.CommandCompletion;
+import org.bukkit.plugin.java.JavaPlugin;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Collections;
 
-@CommandAlias("defreeze")
+@CommandAlias("defreeze|df")
 @Description("Manually unfreeze a player")
 public class FreezeCommand extends BaseCommand {
 
     private final FreezeManager freezeManager;
+    private final JavaPlugin plugin; // Add a reference to the plugin
 
-    public FreezeCommand(FreezeManager freezeManager) {
+    public FreezeCommand(FreezeManager freezeManager, JavaPlugin plugin) {
         this.freezeManager = freezeManager;
+        this.plugin = plugin; // Initialize the plugin reference
     }
 
     @Default
@@ -40,4 +48,24 @@ public class FreezeCommand extends BaseCommand {
         freezeManager.unfreezePlayer(target);
         MessageUtils.sendMessage(target, "&aYou have been unfrozen!");
     }
+    @Subcommand("reload")
+    @Description("Reload the configuration")
+    public void onReload(Player sender) {
+        plugin.reloadConfig();
+        MessageUtils.sendMessage(sender, "&aConfiguration reloaded!");
+    }
+
+@CommandCompletion("@players reload")
+public List<String> onTabComplete(Player sender, String[] args) {
+    if (args.length == 1) {
+        // Provide player names for the first argument
+        return Bukkit.getOnlinePlayers().stream()
+                .map(Player::getName)
+                .collect(Collectors.toList());
+    } else if (args.length == 2) {
+        // Provide "reload" as a suggestion for the second argument
+        return Collections.singletonList("reload");
+    }
+    return Collections.emptyList();
+}
 }
