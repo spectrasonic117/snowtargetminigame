@@ -66,6 +66,28 @@ public final class MessageUtils {
         }
     }
 
+    public static void sendMonaChina(JavaPlugin plugin) {
+        String[] messages = new String[] {
+                "----------------------------------------",
+                " &f⠘⢗⡘⠄⠙⡄⠸⣵⣯⣿⣿⣿⣿⣿⡿⠃⠂⢸⣻⣿⣿⣿⡿⣁⠸⠿⣿⣿⣿⣿",
+                " &f⣶⡯⢳⣆⠄⠄⠄⠄⣍⡛⠿⢿⡿⢋⠄⠄⠄⢜⣿⡿⡟⢿⣾⣿⣿⣛⣟⣛⣙⣻",
+                " &f⣿⠿⣸⠟⠄⠄⠠⡄⠢⣉⣁⢀⣼⣿⡿⢅⣾⣎⠈⠃⠋⢸⣿⣿⣿⣿⣿⣿⣿⣿",
+                " &f⡟⣾⣿⡲⣷⡀⠄⢟⣂⡀⢙⣰⣭⣾⣿⣿⣿⣿⣆⠄⠄⠠⣬⠛⢿⣿⡿⣿⣿⣻", 
+                " &f⣾⣿⣿⠟⠄⣿⣇⠄⠄⢻⣿⣷⣦⣬⡘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠘⣿⣿", 
+                " &f⠉⠄⠄⠄⢰⣿⣿⡆⡤⢖⠚⢿⣿⣿⣿⣿⣎⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠸⣿", 
+                " &f⠄⠄⠄⠄⣿⣿⣿⡇⠄⠛⠃⠄⠙⢿⣿⣿⣿⣧⢹⣿⣿⣿⣿⣿⣿⡿⠃⠄⢀⣿", 
+                " &f⢀⠄⠄⠄⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠙⢿⣿⣿⠄⣿⣿⣿⡿⠟⠋⠄⠄⢀⣿⣿", 
+                " &f⣰⠄⠄⠄⢿⣿⣿⣇⠄⠄⠄⠄⠄⠄⠄⠄⠉⠛⠐⠛⠝⠃⠄⠄⠄⣀⣴⣿⣿⣿", 
+                " &f⢻⠄⠄⠄⠈⢿⣿⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣠⣾⣿⣿⣿⣿⣿", 
+                " &f⣿⣄⠁⠄⠄⠄⠉⠛⠓⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣠⣾⣿⣿⣿⣿⣿⣿⣿", 
+                "----------------------------------------"
+            };
+      for (String message : messages) {
+            Bukkit.getConsoleSender().sendMessage(miniMessage.deserialize(message));
+        }
+
+   }
+
     public static void sendBroadcastMessage(String message) {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(miniMessage.deserialize(message));

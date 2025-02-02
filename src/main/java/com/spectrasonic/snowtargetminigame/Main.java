@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
         registerEvents();
 
         MessageUtils.sendStartupMessage(this);
-        MessageUtils.sendVeiMessage(this);
+        MessageUtils.sendMonaChina(this);
     }
 
     public void onDisable() { 
